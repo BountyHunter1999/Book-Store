@@ -150,7 +150,18 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# SENDGRID
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+FROM_EMAIL = 'hackergamer1999@gmail.com'
+SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+
+# Toggle SandBox Mode, Default True
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
+# echo to stdout
+SENDGRID_ECHO_TO_STDOUT = True
+
+
 
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -163,6 +174,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
+DEFAULT_FROM_EMAIL = 'hackergamer1999@gmail.com'
 
 ACCOUNT_UNIQUE_EMAIL = True
 
